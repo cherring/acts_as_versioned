@@ -222,7 +222,7 @@ module ActiveRecord #:nodoc:
           CLASS_METHODS
 
           # create the dynamic versioned model
-          const_set(versioned_class_name, Class.new(ActiveRecord::Base)).class_eval do
+          const_set(versioned_class_name, Class.new(self.superclass)).class_eval do
             def self.reloadable? ; false ; end
             # find first version before the given version
             def self.before(version)
